@@ -35,6 +35,7 @@ lerna-debug.log*
 *.swo
 *~
 .DS_Store
+.github/*
 
 # Testing
 coverage/
