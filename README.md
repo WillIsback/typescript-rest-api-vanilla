@@ -127,38 +127,38 @@ backend/
 
 ### Authors
 
-| Méthode | Endpoint        | Description              |
-|---------|-----------------|--------------------------|
-| GET     | `/authors`      | Liste tous les auteurs   |
-| GET     | `/authors/:id`  | Récupère un auteur par ID|
-| POST    | `/authors`      | Crée un nouvel auteur    |
-| PUT     | `/authors/:id`  | Met à jour un auteur     |
-| DELETE  | `/authors/:id`  | Supprime un auteur       |
+| Méthode | Endpoint       | Description               |
+| ------- | -------------- | ------------------------- |
+| GET     | `/authors`     | Liste tous les auteurs    |
+| GET     | `/authors/:id` | Récupère un auteur par ID |
+| POST    | `/authors`     | Crée un nouvel auteur     |
+| PUT     | `/authors/:id` | Met à jour un auteur      |
+| DELETE  | `/authors/:id` | Supprime un auteur        |
 
 ### Books
 
-| Méthode | Endpoint              | Description                    |
-|---------|-----------------------|--------------------------------|
-| GET     | `/books`              | Liste tous les livres          |
-| GET     | `/books/:id`          | Récupère un livre par ID       |
-| GET     | `/books/:id/authors`  | Liste les auteurs d'un livre   |
-| POST    | `/books`              | Crée un nouveau livre          |
-| PUT     | `/books/:id`          | Met à jour un livre            |
-| DELETE  | `/books/:id`          | Supprime un livre              |
+| Méthode | Endpoint             | Description                  |
+| ------- | -------------------- | ---------------------------- |
+| GET     | `/books`             | Liste tous les livres        |
+| GET     | `/books/:id`         | Récupère un livre par ID     |
+| GET     | `/books/:id/authors` | Liste les auteurs d'un livre |
+| POST    | `/books`             | Crée un nouveau livre        |
+| PUT     | `/books/:id`         | Met à jour un livre          |
+| DELETE  | `/books/:id`         | Supprime un livre            |
 
 ### Associations
 
-| Méthode | Endpoint        | Description                       |
-|---------|-----------------|-----------------------------------|
-| POST    | `/book-author`  | Associe un auteur à un livre      |
+| Méthode | Endpoint       | Description                  |
+| ------- | -------------- | ---------------------------- |
+| POST    | `/book-author` | Associe un auteur à un livre |
 
 ### Utilitaires
 
-| Méthode | Endpoint          | Description                  |
-|---------|-------------------|------------------------------|
-| GET     | `/health`         | Santé du serveur             |
-| GET     | `/docs`           | Documentation Swagger UI     |
-| GET     | `/openapi.json`   | Spécification OpenAPI 3.0    |
+| Méthode | Endpoint        | Description               |
+| ------- | --------------- | ------------------------- |
+| GET     | `/health`       | Santé du serveur          |
+| GET     | `/docs`         | Documentation Swagger UI  |
+| GET     | `/openapi.json` | Spécification OpenAPI 3.0 |
 
 ## 📖 Documentation
 
@@ -205,7 +205,7 @@ Le projet implémente plusieurs couches de sécurité :
 db.exec(`SELECT * FROM author WHERE name = '${userInput}'`)
 
 // ✅ SÉCURISÉ (prepared statement)
-db.prepare('SELECT * FROM author WHERE name = ?').get(userInput)
+db.prepare("SELECT * FROM author WHERE name = ?").get(userInput)
 ```
 
 ### Validation des entrées
@@ -215,12 +215,12 @@ db.prepare('SELECT * FROM author WHERE name = ?').get(userInput)
 ```typescript
 const authorSchema = z.object({
   firstName: z.string().min(1),
-  lastName: z.string().min(1)
+  lastName: z.string().min(1),
 })
 
 const parsed = authorSchema.safeParse(body)
 if (!parsed.success) {
-  return sendJson(res, 400, { error: 'invalid payload' })
+  return sendJson(res, 400, { error: "invalid payload" })
 }
 ```
 
@@ -230,7 +230,7 @@ if (!parsed.success) {
 
 ```typescript
 const cleanString = (str: string): string => {
-  return str.toLowerCase().replace(/\s+/g, ' ')
+  return str.toLowerCase().replace(/\s+/g, " ")
 }
 ```
 
